@@ -14,7 +14,7 @@ class PostTagSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 25; $i++) {
 
             // prendo un post random
             $post = Post::inRandomOrder()->first();

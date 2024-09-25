@@ -52,6 +52,7 @@
                         @empty
                             
                         @endforelse
+                        
                       </td>
                       <td>
                         <button type="button" class="btn btn-info">{{$post->type->name}}</button>

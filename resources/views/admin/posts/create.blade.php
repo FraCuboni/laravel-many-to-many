@@ -70,6 +70,29 @@
                         </select>
                     </li>
                     
+
+                    <li class="list-group-item">
+
+                        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                            @foreach($tags as $tag)
+
+                            <input
+                              type="checkbox"
+                              class="btn-check"
+                              id="{{$tag->id}}"
+                              autocomplete="off"
+                              value="{{$tag->id}}"
+                              name="tags[]">
+                            <label class="btn btn-outline-primary" for="{{$tag->id}}">{{$tag->name}}</label>
+
+                            @endforeach
+
+
+                        </div>
+
+                    </li>
+                    
                     <li class="list-group-item">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-danger">Delete</button>

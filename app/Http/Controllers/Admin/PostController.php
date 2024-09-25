@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Type;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
@@ -26,8 +27,9 @@ class PostController extends Controller
     public function create()
     {
         $post = Post::all();
-        $types = type::all();
-        return view('admin.posts.create', compact('post', 'types'));
+        $types = Type::all();
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('post', 'types', 'tags'));
     }
 
     /**
@@ -41,15 +43,13 @@ class PostController extends Controller
         $post = new Post();
 
         $post->fill($data);
-        // assegno valori al dato
-        // $comic->title = $data['title'];
-        // $comic->series = $data['series'];
-        // $comic->description = $data['description'];
-        // $comic->price = $data['price'];
-        // $comic->img = $data['img'];
 
-        // salvo
         $post->save();
+
+        if (array_key_exists('tags', $data)) {
+            $post->tags()->attach($data['tags']);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -69,8 +69,9 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $types = type::all();
+        $tags = Tag::all();
         $post = Post::find($id);
-        return view('admin.posts.edit', compact('post', 'types'));
+        return view('admin.posts.edit', compact('post', 'types', 'tags'));
     }
 
     /**
@@ -82,6 +83,11 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->update($data);
+
+
+        if (array_key_exists('tags', $data)) {
+            $post->tags()->sync($data['tags']);
+        }
 
         return redirect()->route('admin.posts.index');
     }
