@@ -64,23 +64,27 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin') }}">
-                                    <i class="fa-solid fa-house"></i>
+                                    <i class="fa-solid mx-1 fa-house"></i>
                                     Admin Home
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.posts.index') }}">
-                                    <i class="fa-solid fa-list"></i>
+                                    <i class="fa-solid mx-1 fa-list"></i>
                                     Posts List
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.types.index') }}">
-                                    <i class="fa-solid fa-code"></i>
+                                    <i class="fa-solid mx-1 fa-code"></i>
                                     Types List
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.types.index') }}">
+                                    <i class="fa-solid mx-1 fa-microchip"></i>
+                                    Tecnologies List
+                                </a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">
-                                    <i class="fa-solid fa-user"></i>
+                                    <i class="fa-solid mx-1 fa-user"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    <i class="fa-solid mx-1 fa-right-from-bracket"></i>
                                     Logout
                                 </a>
 
