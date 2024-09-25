@@ -26,17 +26,13 @@
                     </div>
                 @endif
 
-                <table class="table"> 
+                <table class="table table-bordered"> 
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">id</th>
                       <th scope="col">title</th>
-                      <th scope="col">text</th>
                       <th scope="col">start date</th>
-                      <th scope="col">end date</th>
-                      <th scope="col">posts number</th>
-                      <th scope="col">collaborators</th>
-                      <th scope="col">fk</th>
+                      <th scope="col">tags</th>
                       <th scope="col">type</th>
                       <th scope="col">actions</th>
                     </tr>
@@ -46,12 +42,17 @@
                     <tr>
                       <td scope='row'>{{$post->id}}</td>
                       <td>{{$post->title}}</td>
-                      <td>{{$post->subject}}</td>
                       <td>{{$post->start_date}}</td>
-                      <td>{{$post->end_date}}</td>
-                      <td>{{$post->number_of_posts}}</td>
-                      <td>{{$post->collaborators}}</td>
-                      <td>{{$post->type_id}}</td>
+                      <td>
+
+                        @forelse($post->tags as $tag)
+                        <button type="button" class="btn btn-secondary mb-1">
+                          {{$tag->name}}
+                        </button>
+                        @empty
+                            
+                        @endforelse
+                      </td>
                       <td>
                         <button type="button" class="btn btn-info">{{$post->type->name}}</button>
                       </td>
