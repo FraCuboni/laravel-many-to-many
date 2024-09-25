@@ -15,6 +15,10 @@ class Post extends Model
         return $this->belongsTo(Type::class);
     }
     // questo metodo viene visto come proprietà ($post->type) mi restituisce il type in relazione
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     protected $fillable = [
         'title',
