@@ -64,6 +64,15 @@
                     </li>
                     
                     <li class="list-group-item">
+                        <h5>type</h5>
+                        <select name="type_id" class="form-select" aria-label="Default select example">
+                            @foreach($types as $type)
+                                <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                    
+                    <li class="list-group-item">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-danger">Delete</button>
                     </li>

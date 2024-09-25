@@ -82,7 +82,7 @@ class typeController extends Controller
 
         $type->update($data);
 
-        return redirect()->route('admin.types.show', $type);
+        return redirect()->route('admin.types.index');
     }
 
     /**

@@ -75,7 +75,7 @@
                                     <i class="fa-solid mx-1 fa-code"></i>
                                     Types List
                                 </a>
-                                <a class="dropdown-item" href="{{ route('admin.types.index') }}">
+                                <a class="dropdown-item" href="{{ route('admin.tags.index') }}">
                                     <i class="fa-solid mx-1 fa-microchip"></i>
                                     Tecnologies List
                                 </a>

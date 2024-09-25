@@ -4,20 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\Type;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 
-class PostController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::all();
-        $types = Type::all();
-        return view('admin.posts.index', compact('posts', 'types'));
+        $tags = tag::all();
+
+        return view('admin.tags.index', [
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -25,9 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $post = Post::all();
-        $types = type::all();
-        return view('admin.posts.create', compact('post', 'types'));
+        $tag = tag::all();
+        return view('admin.tags.create', compact('tag'));
     }
 
     /**
@@ -38,9 +38,9 @@ class PostController extends Controller
         $data = $request->all();
         Log::debug("data", $data);
         // creo dato da aggiungere nel db
-        $post = new Post();
+        $tag = new tag();
 
-        $post->fill($data);
+        $tag->fill($data);
         // assegno valori al dato
         // $comic->title = $data['title'];
         // $comic->series = $data['series'];
@@ -49,8 +49,8 @@ class PostController extends Controller
         // $comic->img = $data['img'];
 
         // salvo
-        $post->save();
-        return redirect()->route('admin.posts.index');
+        $tag->save();
+        return redirect()->route('admin.tags.index');
     }
 
 
@@ -59,8 +59,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::find($id);
-        return view('admin.posts.show', compact('post'));
+        $tag = tag::find($id);
+        return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -68,9 +68,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        $types = type::all();
-        $post = Post::find($id);
-        return view('admin.posts.edit', compact('post', 'types'));
+        $tag = tag::find($id);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -79,19 +78,19 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->all();
-        $post = Post::find($id);
+        $tag = tag::find($id);
 
-        $post->update($data);
+        $tag->update($data);
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.tags.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(tag $tag)
     {
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('deleted', 'post ' . '"' . $post->title . '"' . ' deleted');
+        $tag->delete();
+        return redirect()->route('admin.tags.index')->with('deleted', 'tag ' . '"' . $tag->title . '"' . ' deleted');
     }
 }
