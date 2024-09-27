@@ -9,6 +9,8 @@ use App\Models\Type;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Log;
 
+use App\Functions\Helper;
+
 class PostController extends Controller
 {
     /**
@@ -37,10 +39,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // VALIDAZIONE DA AGGIUNGERE
         $data = $request->all();
         Log::debug("data", $data);
         // creo dato da aggiungere nel db
         $post = new Post();
+        $data['slug'] = Helper::generateSlug($data['title'], Post::class);
 
         $post->fill($data);
 

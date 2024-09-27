@@ -33,19 +33,24 @@
                             <textarea type="text" class="form-control" id="subject" name="subject" placeholder="subject"></textarea>
                         </div>
                     </li>
-                    
+
                     <li class="list-group-item">
-                        <div class="form-group">
-                            <label for="start_date"><h5>start date</h5></label>
-                            <input type="text" class="form-control" id="start_date" name="start_date" placeholder="start_date">
-                        </div>
-                    </li>
-                    
-                    <li class="list-group-item">
-                        <div class="form-group">
-                            <label for="end_date"><h5>end date</h5></label>
-                            <input type="text" class="form-control" id="end_date" name="end_date" placeholder="end_date">                   
-                        </div>
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="start_date"><h5>start date</h5></label>
+                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="start_date">
+                                </div>
+                            </div>
+                        
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label for="end_date"><h5>end date</h5></label>
+                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="end_date">                   
+                                </div>
+                            </div>
+                        </div>   
                     </li>
                     
                     <li class="list-group-item">

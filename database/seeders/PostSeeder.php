@@ -8,6 +8,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 
+// importo helper per lo slug
+use App\Functions\Helper;
+
 class PostSeeder extends Seeder
 {
     /**
@@ -21,6 +24,8 @@ class PostSeeder extends Seeder
             // $train->azienda = $faker->company();
 
             $post->title = $faker->jobTitle();
+            // genero slug con l'helper
+            $post->slug = Helper::generateSlug($post->title, Post::class);
             $post->type_id = Type::inRandomOrder()->first()->id; //estraggo elemento random dalla table type, prendo il primo elemento e il suo ID
             $post->subject = $faker->sentence();
             $post->start_date = $faker->date();
